@@ -8,7 +8,6 @@
       v-model.trim="value"
       required
     />
-    {{ testdata }}
     <div class="truncate">Add your todo task above, hit Enter to submit.</div>
     <ul class="collection" v-for="todo in todos" :key="todo.index">
       <li
@@ -51,7 +50,7 @@ export default {
     return {
       todos: [],
       value: "",
-      testdata: ''
+      beUrl: import.meta.env.VITE_BE_URL || 'http://localhost:5000',
     };
   },
   mounted() {
@@ -59,14 +58,14 @@ export default {
   },
   methods: {
     getTodos() {
-      axios.get('http://localhost:5000/todos')
+      axios.get(`${this.beUrl}/todos`)
           .then((res) => res.data)
           .then((data) => this.todos = data)
           .catch((e) => console.log(e));
     },
     add() {
-      axios.post('http://localhost:5000/todos',
-          {
+      axios.post(`${this.beUrl}/todos`,
+    {
             index: this.todos.length,
             text: this.value,
             completed: false,
@@ -76,11 +75,11 @@ export default {
     },
     handleUpdateTodo(todo) {
       const updated = { ...todo, completed: !todo.completed };
-      axios.patch('http://localhost:5000/todos/'+ todo._id, updated)
+      axios.patch(`${this.beUrl}/todos/${todo._id}`, updated)
       .then(() => this.getTodos());
     },
     handleDeleteTodo(todo) {
-      axios.delete('http://localhost:5000/todos/' + todo._id)
+      axios.delete(`${this.beUrl}/todos/${todo._id}`)
       .then(() => this.getTodos());
     },
   },
