@@ -7,9 +7,10 @@ import TodoLayout from "@/components/TodoLayout/TodoLayout.vue";
 <template>
   <Header />
 
-  <main>
-    <TodoLayout />
-  </main>
+    <main>
+      <TodoLayout />
+      <ZsRecipeInfo />
+    </main>
 
   <Footer />
 </template>
