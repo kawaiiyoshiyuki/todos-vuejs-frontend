@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@zerops/zestrat-vue": "^0.0.4",
+    "@zerops/zestratcss": "^0.0.13",
     "axios": "^0.26.0",
     "vue": "^3.2.31"
   },
