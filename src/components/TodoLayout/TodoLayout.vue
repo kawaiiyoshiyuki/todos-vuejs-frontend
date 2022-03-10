@@ -50,7 +50,7 @@ export default {
     return {
       todos: [],
       value: "",
-      beUrl: import.meta.env.VITE_BE_URL || 'http://localhost:5000',
+      beUrl: import.meta.env.VITE_API_ENDPOINT || 'http://localhost:5000',
     };
   },
   mounted() {
